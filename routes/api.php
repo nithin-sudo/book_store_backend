@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,4 +39,8 @@ Route::group([
     Route::delete('deletebookbyid', [BookController::class, 'deleteBookById']);
     Route::post('updatebookbyid', [BookController::class, 'updateBookById']);
     Route::get('getallbooks', [BookController::class, 'getAllBooks']);
+
+    Route::post('addbooktocartbybookid', [CartController::class, 'addBookToCartByBookId']);
+    Route::delete('deletebookbycartid', [CartController::class, 'deleteBookByCartId']);
+    Route::get('getallbooksfromcart', [CartController::class, 'getAllBooksByUserId']);
 });
