@@ -36,6 +36,6 @@ Route::group([
     Route::post('addnewbook', [BookController::class, 'addNewBook']);
     Route::post('addexistingbook', [BookController::class, 'addExistingBook']);
     Route::delete('deletebookbyid', [BookController::class, 'deleteBookById']);
-    Route::put('updatebookbyid', [BookController::class, 'updateBookById']);
+    Route::post('updatebookbyid', [BookController::class, 'updateBookById']);
     Route::get('getallbooks', [BookController::class, 'getAllBooks']);
 });
