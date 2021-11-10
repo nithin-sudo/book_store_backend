@@ -145,7 +145,7 @@ class BookController extends Controller
                     return response()->json(['message' => 'Unauthorised'], 403);
                 }
                 $book = Book::find($request->id);
-                //echo $book;
+                
                 if(!$book)
                 {
                     return response()->json(['message' => 'Book not Found'], 404);
@@ -155,12 +155,13 @@ class BookController extends Controller
                 {
                     $path = str_replace(env('AWS_URL_PATH'),'',$book->image);
             
-                    if(Storage::disk('s3')->exists($path)) {
+                    if(Storage::disk('s3')->exists($path)) 
+                    {
                         Storage::disk('s3')->delete($path);
                     }
                     $path = Storage::disk('s3')->put('images', $request->image);
                     $pathurl = Storage::disk('s3')->url($path);
-                    $book->logo = $pathurl;
+                    $book->image = $pathurl;
                 }
 
                 $book->fill($request->except('image'));
